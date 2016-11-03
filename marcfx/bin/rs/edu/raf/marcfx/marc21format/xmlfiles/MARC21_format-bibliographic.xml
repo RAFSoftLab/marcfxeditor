@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<format name="MARC 21 format" description="MARC 21 format for bibliographic data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="E:\nauka\doktorat-softver\doktorat-workspace\marc21.cataloguing.editor\src\marc21\cataloguing\format\xmlfiles\marc21_formatNovo.xsd">
+	<leader repeatable="false" name="LEADER" mandatory="true">
+		<charposition start="00" end="04" description="Record length" isSystemGenerated="usually"/>
+		<charposition start="05" end="05" description="Record status" isSystemGenerated="usually">
+			<codelist>
+				<internalCodeList>
+					<item code="a" value="Increase in encoding level"/>
+					<item code="c" value="Corrected or revised"/>
+					<item code="d" value="Deleted"/>
+					<item code="n" value="New"/>
+					<item code="p" value="Increase in encoding level from prepublication"/>
+				</internalCodeList>
+			</codelist>
+		</charposition>
+		<charposition start="06" end="06" description="Type of record" isSystemGenerated="never"/>
+		<charposition start="07" end="07" description="Bibliographic level"/>
+		<charposition start="08" end="08" description="Type of control"/>
+		<charposition start="09" end="09" description="Character coding scheme" isSystemGenerated="usually"/>
+		<charposition start="10" end="10" description="Indicator count" defaultValue="2"/>
+		<charposition start="11" end="11" description="Subfield code count" defaultValue="2"/>
+		<charposition start="12" end="16" description="Base address of data" isSystemGenerated="usually"/>
+		<charposition start="17" end="17" description="Encoding level"/>
+		<charposition start="18" end="18" description="Descriptive cataloging form"/>
+		<charposition start="19" end="19" description="Multipart resource record level"/>
+		<charposition start="20" end="20" description="Length of the length-of-field portion" defaultValue="4"/>
+		<charposition start="21" end="21" description="Length of the starting-character-position portion" defaultValue="5"/>
+		<charposition start="22" end="22" description="Length of the implementation-defined portion" defaultValue="0"/>
+		<charposition start="23" end="23" description="Undefined" defaultValue="0"/>
+	</leader>
+	<directory repeatable="false">
+		<charposition start="00" end="02" description="Tag" isSystemGenerated="always"/>
+		<charposition start="03" end="06" description="Field length" isSystemGenerated="always"/>
+		<charposition start="07" end="11" description="Starting character position" isSystemGenerated="always"/>
+	</directory>
+	<controlfield repeatable="false" description="Control Number" name="001" isSystemGenerated="may be"/>
+	<controlfield repeatable="false" description="Control Number Identifier" name="003" isSystemGenerated="usually"/>
+	<controlfield repeatable="false" description="Date and Time of Latest Transaction" name="005" isSystemGenerated="always"/>
+	<controlfield repeatable="false" description="Fixed-Length Data Elements-Additional Material" name="006" materialType="BK">
+		<charposition start="00" end="00" description="Form of material">
+			<codelist>
+				<internalCodeList>
+					<item code="a" value="Language material"/>
+					<item code="t" value="Manuscript language material"/>
+				</internalCodeList>
+			</codelist>
+		</charposition>
+		<charposition start="01" end="04" description="Illustrations">
+			<codelist>
+				<internalCodeList>
+					<item code="#" value="No illustrations"/>
+					<item code="a" value="Illustrations"/>
+					<item code="b" value="Maps"/>
+					<item code="c" value="Portraits"/>
+					<item code="d" value="Charts"/>
+					<item code="e" value="Plans"/>
+					<item code="f" value="Plates"/>
+					<item code="g" value="Music"/>
+					<item code="h" value="Facsimiles"/>
+					<item code="i" value="Coats of arms"/>
+					<item code="j" value="Genealogical tables"/>
+					<item code="k" value="Forms"/>
+					<item code="l" value="Samples"/>
+					<item code="m" value="Phonodisc, phonowire, etc."/>
+					<item code="o" value="Photographs"/>
+					<item code="p" value="Illuminations"/>
+					<item code="|" value="No attempt to code"/>
+				</internalCodeList>
+			</codelist>
+		</charposition>
+		<charposition start="05" end="05" description="Target audience"/>
+	</controlfield>
+	<controlfield repeatable="false" description="Fixed-Length Data Elements-General Information" name="008" materialType="BK"/>
+	<datafield repeatable="false" description="Library of Congress Control Number" name="010">
+		<subfield repeatable="false" description="LC control number" name="a"/>
+		<subfield repeatable="true" description="NUCMC control number" name="b"/>
+		<subfield repeatable="true" description="Canceled/invalid LC control number" name="z"/>
+		<subfield repeatable="true" description="Field link and sequence number" name="8"/>
+	</datafield>
+	<datafield repeatable="true" description="Patent Control Information" name="013">
+		<subfield repeatable="false" description="Number" name="a"/>
+	</datafield>
+	<datafield repeatable="true" description="National Bibliography Number" name="015">
+		<subfield repeatable="true" description="National bibliography number" name="a"/>
+	</datafield>
+	<datafield repeatable="true" description="National Bibliographic Agency Control Number" name="016">
+		<subfield repeatable="false" description="Record control number" name="a"/>
+		<indicator index="1" description="National bibliographic agency">
+			<internalCodeList>
+				<item code="#" value="Library and Archives Canada"/>
+				<item code="7" value="Source specified in subfield $2"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="true" description="International Standard Book Number" name="020">
+		<subfield repeatable="false" description="International Standard Book Number" name="a"></subfield>
+		<subfield repeatable="false" description="Terms of availability" name="c"/>
+		<subfield repeatable="true" description="Canceled/invalid ISBN" name="z"/>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />		
+	</datafield>
+	<datafield repeatable="true" description="International Standard Serial Number" name="022">
+		<subfield repeatable="false" description="International Standard Serial Number" name="a"></subfield>
+		<subfield repeatable="false" description="ISSN-L" name="l"/>
+		<subfield repeatable="true" description="Canceled ISSN-L" name="m"/>
+		<subfield repeatable="true" description="Incorrect ISSN" name="y"/>
+		<subfield repeatable="true" description="Canceled ISSN" name="z"/>
+		<subfield repeatable="false" description="Source" name="2"/>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />
+		<indicator index="1" description="Level of international interest">
+			<internalCodeList>
+				<item code="#" value="No level specified"></item>
+				<item code="0" value="Continuing resource of international interest"/>
+				<item code="1" value="Continuing resource not of international interest"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="false" description="Main Entry - Personal Name" name="100">
+		<subfield repeatable="false" description="Personal name" name="a"></subfield>
+		<subfield repeatable="false" description="Numeration" name="b"></subfield>
+		<subfield repeatable="true" description="Titles and words associated with a name" name="c"></subfield>
+		<subfield repeatable="false" description="Dates associated with a name" name="d" />
+		<subfield repeatable="true" description="Relator term" name="e"/>
+		<subfield repeatable="false" description="Date of a work" name="f"/>
+		<subfield repeatable="false" description="Miscellaneous information" name="g"/>
+		<subfield repeatable="true" description="Attribution qualifier" name="j"/>
+		<subfield repeatable="true" description="Form subheading" name="k" />
+		<subfield repeatable="false" description="Language of a work" name="l" />
+		<subfield repeatable="true" description="Number of part/section of a work" name="n" />
+		<subfield repeatable="true" description="Name of part/section of a work" name="p" />
+		<subfield repeatable="false" description="Fuller form of name" name="q"/>
+		<subfield repeatable="false" description="Title of a work" name="t"/>
+		<subfield repeatable="false" description="Affiliation" name="u"/>
+		<subfield repeatable="true" description="Authority record control number " name="0"/>
+		<subfield repeatable="true" description="Relator code" name="4"/>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />
+		<indicator index="1" description="Type of personal name entry element">
+			<internalCodeList>
+				<item code="0" value="Forename"/>
+				<item code="1" value="Surname"/>
+				<item code="2" value="Family name"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="false" description="Main Entry-Corporate Name" name="110">
+		<subfield repeatable="false" description="Corporate name or jurisdiction name as entry element" name="a"></subfield>
+		<subfield repeatable="true" description="Subordinate unit" name="b"/>
+		<subfield repeatable="false" description="Location of meeting" name="c"/>
+		<subfield repeatable="true" description="Date of meeting or treaty signing" name="d"/>
+		<subfield repeatable="true" description="Relator term" name="e"/>
+		<subfield repeatable="false" description="Date of a work" name="f"/>
+		<subfield repeatable="false" description="Miscellaneous information" name="g"/>
+		<subfield repeatable="true" description="Attribution qualifier" name="j"/>
+		<subfield repeatable="true" description="Form subheading" name="k" />
+		<subfield repeatable="false" description="Language of a work" name="l" />
+		<subfield repeatable="true" description="Number of part/section of a work" name="n" />
+		<subfield repeatable="true" description="Name of part/section of a work" name="p" />
+		<subfield repeatable="false" description="Fuller form of name" name="q"/>
+		<subfield repeatable="false" description="Title of a work" name="t"/>
+		<subfield repeatable="false" description="Affiliation" name="u"/>
+		<subfield repeatable="true" description="Authority record control number " name="0"/>
+		<subfield repeatable="true" description="Relator code" name="4"/>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />		
+		<indicator index="1" description="Type of corporate name entry element" defaultValue="0">
+			<internalCodeList>
+				<item code="0" value="Inverted name"/>
+				<item code="1" value="Jurisdiction name"/>
+				<item code="2" value="Name in direct order"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="true" description="Abbreviated Title" name="210">
+		<subfield repeatable="false" description="Abbreviated title" name="a"></subfield>
+		<subfield repeatable="false" description="Qualifying information" name="b"></subfield>
+		<subfield repeatable="true" description="Source" name="2"></subfield>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />
+		<indicator index="1" description="Title added entry" defaultValue="0">
+			<internalCodeList>
+				<item code="0" value="No added entry"></item>
+				<item code="1" value="Added entry"></item>
+			</internalCodeList>
+		</indicator>
+		<indicator index="2" description="Second Indicator" defaultValue="#">
+			<internalCodeList>
+				<item code="#" value="Abbreviated key title"></item>
+				<item code="0" value="Other abbreviated title"></item>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="false" description="Uniform Title" name="240">		
+		<subfield repeatable="false" description="Uniform title" name="a"></subfield>
+		<subfield repeatable="true" description="Date of treaty signing" name="d" />
+		<subfield repeatable="false" description="Date of a work" name="f"/>
+		<subfield repeatable="false" description="Miscellaneous information" name="g"/>
+		<subfield repeatable="false" description="Medium" name="h"/>
+		<subfield repeatable="true" description="Form subheading" name="k" />
+		<subfield repeatable="true" description="Language of a work" name="l" />
+		<subfield repeatable="true" description="Medium of performance for music" name="m" />
+		<subfield repeatable="true" description="Number of part/section of a work" name="n" />
+		<subfield repeatable="false" description="Arranged statement for music" name="o"/>
+		<subfield repeatable="true" description="Name of part/section of a work" name="p" />
+		<subfield repeatable="false" description="Key for music" name="r" />
+		<subfield repeatable="false" description="Version" name="s" />
+		<subfield repeatable="true" description="Authority record control number" name="0" />
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />
+		<indicator index="1" description="Uniform title printed or displayed">
+			<internalCodeList>
+				<item code="0" value="Not printed or displayed"/>
+				<item code="1" value="Printed or displayed"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="false" description="Title Statement" name="245">
+		<subfield repeatable="false" description="Title" name="a"/>
+		<subfield repeatable="false" description="Remainder of title" name="b"/>
+		<subfield repeatable="false" description="Statement of responsibility, etc." name="c"/>
+		<subfield repeatable="false" description="Inclusive dates" name="f"/>
+		<subfield repeatable="false" description="Bulk dates" name="g"/>
+		<subfield repeatable="false" description="Medium" name="h"/>
+		<subfield repeatable="true" description="Form" name="h"/>
+		<subfield repeatable="true" description="Number of part/section of a work" name="n" />
+		<subfield repeatable="true" description="Name of part/section of a work" name="p" />
+		<subfield repeatable="false" description="Version" name="s"/>
+		<subfield repeatable="false" description="Linkage" name="6" />
+		<subfield repeatable="true" description="Field link and sequence number" name="8" />
+		<indicator index="1" description="Title added entry" defaultValue="0">
+			<internalCodeList>
+				<item code="0" value="No added entry "></item>
+				<item code="1" value="Added entry"></item>
+			</internalCodeList>
+		</indicator>
+		<indicator index="2" description="Nonfiling characters" defaultValue="0">
+			<internalCodeList>
+				<item code="0" value="No nonfiling characters"></item>
+				<item code="1" value="1 nonfiling character"></item>
+				<item code="2" value="2 nonfiling characters"></item>
+				<item code="3" value="3 nonfiling characters"></item>
+				<item code="4" value="4 nonfiling characters"></item>
+				<item code="5" value="5 nonfiling characters"></item>
+				<item code="6" value="6 nonfiling characters"></item>
+				<item code="7" value="7 nonfiling characters"></item>
+				<item code="8" value="8 nonfiling characters"></item>
+				<item code="9" value="9 nonfiling characters"></item>
+			</internalCodeList>
+		</indicator>
+	</datafield>	
+	<externalCodeList id="marccountry" name="MARC Code List for Countries" source="Network Development and MARC Standards Office, Library of Congress">
+		<item code="af" value="Afghanistan"/>
+		<item code="alu" value="Alabama"/>
+		<item code="aku" value="Alaska"/>
+		<item code="aa" value="Albania"/>
+		<item code="abc" value="Alberta"/>
+		<item code="ae" value="Algeria"/>
+		<item code="as" value="American Samoa"/>
+		<item code="an" value="Andorra"/>
+		<item code="ao" value="Angola"/>
+		<item code="am" value="Anguilla"/>
+		<item code="ay" value="Antarctica"/>
+		<item code="aq" value="Antigua and Barbuda"/>
+		<item code="ag" value="Argentina"/>
+		<item code="azu" value="Arizona"/>
+		<item code="aru" value="Arkansas"/>
+		<item code="ai" value="Armenia (Republic)"/>
+		<item code="aw" value="Aruba"/>
+		<item code="at" value="Australia"/>
+		<item code="aca" value="Australian Capital Territory"/>
+		<item code="au" value="Austria"/>
+		<item code="aj" value="Azerbaijan"/>
+		<item code="bf" value="Bahamas"/>
+		<item code="ba" value="Bahrain"/>
+		<item code="bg" value="Bangladesh"/>
+		<item code="bb" value="Barbados"/>
+		<item code="bw" value="Belarus"/>
+		<item code="be" value="Belgium"/>
+		<item code="bh" value="Belize"/>
+		<item code="dm" value="Benin"/>
+		<item code="bm" value="Bermuda Islands"/>
+		<item code="bt" value="Bhutan"/>
+		<item code="bo" value="Bolivia"/>
+		<item code="bn" value="Bosnia and Hercegovina"/>
+		<item code="bs" value="Botswana"/>
+		<item code="bv" value="Bouvet Island"/>
+		<item code="bl" value="Brazil"/>
+		<item code="bcc" value="British Columbia"/>
+		<item code="bi" value="British Indian Ocean Territory"/>
+		<item code="vb" value="British Virgin Islands"/>
+		<item code="bx" value="Brunei"/>
+		<item code="bu" value="Bulgaria"/>
+		<item code="uv" value="Burkina Faso"/>
+		<item code="br" value="Burma"/>
+		<item code="bd" value="Burundi"/>
+		<item code="cau" value="California"/>
+		<item code="cb" value="Cambodia"/>
+		<item code="cm" value="Cameroon"/>
+		<item code="xxc" value="Canada"/>
+		<item code="cv" value="Cape Verde"/>
+		<item code="cj" value="Cayman Islands"/>
+		<item code="cx" value="Central African Republic"/>
+		<item code="cd" value="Chad"/>
+		<item code="cl" value="Chile"/>
+		<item code="cc" value="China"/>
+		<item code="ch" value="China (Republic : 1949- )"/>
+		<item code="xa" value="Christmas Island (Indian Ocean)"/>
+		<item code="xb" value="Cocos (Keeling) Islands"/>
+		<item code="ck" value="Colombia"/>
+		<item code="cou" value="Colorado"/>
+		<item code="cq" value="Comoros"/>
+		<item code="cf" value="Congo (Brazzaville)"/>
+		<item code="cg" value="Congo (Democratic Republic)"/>
+		<item code="ctu" value="Connecticut "/>
+		<item code="cw" value="Cook Islands"/>
+		<item code="xga" value="Coral Sea Islands Territory"/>
+		<item code="cr" value="Costa Rica"/>
+		<item code="iv" value="Côte d'Ivoire"/>
+		<item code="ci" value="Croatia"/>
+		<item code="cu" value="Cuba"/>
+		<item code="cy" value="Cyprus"/>
+		<item code="xr" value="Czech Republic"/>
+		<item code="deu" value="Delaware"/>
+		<item code="dk" value="Denmark"/>
+		<item code="dcu" value="District of Columbia"/>
+		<item code="ft" value="Djibouti"/>
+		<item code="dq" value="Dominica"/>
+		<item code="dr" value="Dominican Republic"/>
+		<item code="em" value="East Timor"/>
+		<item code="ec" value="Ecuador"/>
+		<item code="ua" value="Egypt"/>
+		<item code="es" value="El Salvador"/>
+		<item code="enk" value="England"/>
+		<item code="eg" value="Equatorial Guinea"/>
+		<item code="ea" value="Eritrea"/>
+		<item code="er" value="Estonia"/>
+		<item code="et" value="Ethiopia"/>
+		<item code="fk" value="Falkland Islands"/>
+		<item code="fa" value="Faroe Islands"/>
+		<item code="fj" value="Fiji"/>
+		<item code="fi" value="Finland"/>
+		<item code="flu" value="Florida"/>
+		<item code="fr" value="France"/>
+		<item code="fg" value="French Guiana"/>
+		<item code="fp" value="French Polynesia"/>
+		<item code="go" value="Gabon"/>
+		<item code="gm" value="Gambia"/>
+		<item code="gz" value="Gaza Strip"/>
+		<item code="gau" value="Georgia"/>
+		<item code="gs" value="Georgia (Republic)"/>
+		<item code="gw" value="Germany"/>
+		<item code="gh" value="Ghana"/>
+		<item code="gi" value="Gibraltar"/>
+		<item code="gr" value="Greece"/>
+		<item code="gl" value="Greenland"/>
+		<item code="gd" value="Grenada"/>
+		<item code="gp" value="Guadeloupe"/>
+		<item code="gu" value="Guam"/>
+		<item code="gt" value="Guatemala"/>
+		<item code="gv" value="Guinea"/>
+		<item code="pg" value="Guinea-Bissau"/>
+		<item code="gy" value="Guyana"/>
+		<item code="ht" value="Haiti"/>
+		<item code="hiu" value="Hawaii"/>
+		<item code="hm" value="Heard and McDonald Islands"/>
+		<item code="ho" value="Honduras"/>
+		<item code="hu" value="Hungary"/>
+		<item code="ic" value="Iceland"/>
+		<item code="idu" value="Idaho"/>
+		<item code="ilu" value="Illinois"/>
+		<item code="ii" value="India"/>
+		<item code="inu" value="Indiana"/>
+		<item code="io" value="Indonesia"/>
+		<item code="iau" value="Iowa"/>
+		<item code="ir" value="Iran"/>
+		<item code="iq" value="Iraq"/>
+		<item code="iy" value="Iraq-Saudi Arabia Neutral Zone"/>
+		<item code="ie" value="Ireland"/>
+		<item code="is" value="Israel"/>
+		<item code="it" value="Italy"/>
+		<item code="jm" value="Jamaica"/>
+		<item code="ja" value="Japan"/>
+		<item code="ji" value="Johnston Atoll"/>
+		<item code="jo" value="Jordan"/>
+		<item code="ksu" value="Kansas"/>
+		<item code="kz" value="Kazakhstan"/>
+		<item code="kyu" value="Kentucky"/>
+		<item code="ke" value="Kenya"/>
+		<item code="gb" value="Kiribati"/>
+		<item code="kn" value="Korea (North)"/>
+		<item code="ko" value="Korea (South)"/>
+		<item code="kv" value="Kosovo"/>
+		<item code="ku" value="Kuwait"/>
+		<item code="kg" value="Kyrgyzstan"/>
+		<item code="ls" value="Laos"/>
+		<item code="lv" value="Latvia"/>
+		<item code="le" value="Lebanon"/>
+		<item code="lo" value="Lesotho"/>
+		<item code="lb" value="Liberia"/>
+		<item code="ly" value="Libya"/>
+		<item code="lh" value="Liechtenstein"/>
+		<item code="li" value="Lithuania"/>
+		<item code="lau" value="Louisiana"/>
+		<item code="lu" value="Luxembourg"/>
+		<item code="xn" value="Macedonia"/>
+		<item code="mg" value="Madagascar"/>
+		<item code="meu" value="Maine"/>
+		<item code="mw" value="Malawi"/>
+		<item code="my" value="Malaysia"/>
+		<item code="xc" value="Maldives"/>
+		<item code="ml" value="Mali"/>
+		<item code="mm" value="Malta"/>
+		<item code="mbc" value="Manitoba"/>
+		<item code="xe" value="Marshall Islands"/>
+		<item code="mq" value="Martinique"/>
+		<item code="mdu" value="Maryland"/>
+		<item code="mau" value="Massachusetts"/>
+		<item code="mu" value="Mauritania"/>
+		<item code="mf" value="Mauritius"/>
+		<item code="ot" value="Mayotte"/>
+		<item code="mx" value="Mexico"/>
+		<item code="miu" value="Michigan"/>
+		<item code="fm" value="Micronesia (Federated States)"/>
+		<item code="xf" value="Midway Islands"/>
+		<item code="mnu" value="Minnesota"/>
+		<item code="msu" value="Mississippi"/>
+		<item code="mou" value="Missouri"/>
+		<item code="mv" value="Moldova"/>
+		<item code="mc" value="Monaco"/>
+		<item code="mp" value="Mongolia"/>
+		<item code="mtu" value="Montana"/>
+		<item code="mo" value="Montenegro"/>
+		<item code="mj" value="Montserrat"/>
+		<item code="mr" value="Morocco"/>
+		<item code="mz" value="Mozambique"/>
+		<item code="sx" value="Namibia"/>
+		<item code="nu" value="Nauru"/>
+		<item code="nbu" value="Nebraska"/>
+		<item code="np" value="Nepal"/>
+		<item code="ne" value="Netherlands"/>
+		<item code="na" value="Netherlands Antilles"/>
+		<item code="nvu" value="Nevada"/>
+		<item code="nkc" value="New Brunswick"/>
+		<item code="nl" value="New Caledonia"/>
+		<item code="nhu" value="New Hampshire"/>
+		<item code="nju" value="New Jersey"/>
+		<item code="nmu" value="New Mexico"/>
+		<item code="xna" value="New South Wales"/>
+		<item code="nyu" value="New York (State)"/>
+		<item code="nz" value="New Zealand"/>
+		<item code="nfc" value="Newfoundland and Labrador"/>
+		<item code="nq" value="Nicaragua"/>
+		<item code="ng" value="Niger"/>
+		<item code="nr" value="Nigeria"/>
+		<item code="xh" value="Niue"/>
+		<item code="xx" value="No place, unknown, or undetermined"/>
+		<item code="nx" value="Norfolk Island "/>
+		<item code="ncu" value="North Carolina]"/>
+		<item code="ndu" value="North Dakota"/>
+		<item code="nik" value="Northern Ireland"/>
+		<item code="nw" value="Northern Mariana Islands"/>
+		<item code="xoa" value="Northern Territory"/>
+		<item code="ntc" value="Northwest Territories"/>
+		<item code="no" value="Norway"/>
+		<item code="nsc" value="Nova Scotia"/>
+		<item code="nuc" value="Nunavut"/>
+		<item code="ohu" value="Ohio"/>
+		<item code="oku" value="Oklahoma"/>
+		<item code="mk" value="Oman"/>
+		<item code="onc" value="Ontario"/>
+		<item code="oru" value="Oregon"/>
+		<item code="pk" value="Pakistan"/>
+		<item code="pw" value="Palau"/>
+		<item code="pn" value="Panama"/>
+		<item code="pp" value="Papua New Guinea"/>
+		<item code="pf" value="Paracel Islands]"/>
+		<item code="py" value="Paraguay"/>
+		<item code="pau" value="Pennsylvania"/>
+		<item code="pe" value="Peru"/>
+		<item code="ph" value="Philippines"/>
+		<item code="pc" value="Pitcairn Island"/>
+		<item code="pl" value="Poland"/>
+		<item code="po" value="Portugal"/>
+		<item code="pic" value="Prince Edward Island"/>
+		<item code="pr" value="Puerto Rico"/>
+		<item code="qa" value="Qatar"/>
+		<item code="quc" value="Québec (Province)"/>
+		<item code="qea" value="Queensland"/>
+		<item code="re" value="Réunion"/>
+		<item code="riu" value="Rhode Island"/>
+		<item code="rm" value="Romania"/>
+		<item code="ru" value="Russia (Federation)"/>
+		<item code="rw" value="Rwanda"/>
+		<item code="xj" value="Saint Helena"/>
+		<item code="xd" value="Saint Kitts-Nevis"/>
+		<item code="xk" value="Saint Lucia"/>
+		<item code="xl" value="Saint Pierre and Miquelon"/>
+		<item code="xm" value="Saint Vincent and the Grenadines"/>
+		<item code="ws" value="Samoa"/>
+		<item code="sm" value="San Marino"/>
+		<item code="sf" value="Sao Tome and Principe"/>
+		<item code="snc" value="Saskatchewan"/>
+		<item code="su" value="Saudi Arabia"/>
+		<item code="stk" value="Scotland"/>
+		<item code="sg" value="Senegal"/>
+		<item code="rb" value="Serbia"/>
+		<item code="se" value="Seychelles"/>
+		<item code="sl" value="Sierra Leone"/>
+		<item code="si" value="Singapore"/>
+		<item code="xo" value="Slovakia"/>
+		<item code="xv" value="Slovenia"/>
+		<item code="bp" value="Solomon Islands"/>
+		<item code="so" value="Somalia"/>
+		<item code="sa" value="South Africa"/>
+		<item code="xra" value="South Australia"/>
+		<item code="scu" value="South Carolina"/>
+		<item code="sdu" value="South Dakota"/>
+		<item code="xs" value="South Georgia and the South Sandwich Islands"/>
+		<item code="sp" value="Spain"/>
+		<item code="sh" value="Spanish North Africa"/>
+		<item code="xp" value="Spratly Island"/>
+		<item code="ce" value="Sri Lanka"/>
+		<item code="sj" value="Sudan"/>
+		<item code="sr" value="Surinam"/>
+		<item code="sq" value="Swaziland"/>
+		<item code="sw" value="Sweden"/>
+		<item code="sz" value="Switzerland"/>
+		<item code="sy" value="Syria"/>
+		<item code="ta" value="Tajikistan"/>
+		<item code="tz" value="Tanzania"/>
+		<item code="tma" value="Tasmania"/>
+		<item code="tnu" value="Tennessee"/>
+		<item code="fs" value="Terres australes et antarctiques françaises"/>
+		<item code="txu" value="Texas"/>
+		<item code="th" value="Thailand"/>
+		<item code="tg" value="Togo"/>
+		<item code="tl" value="Tokelau"/>
+		<item code="to" value="Tonga"/>
+		<item code="tr" value="Trinidad and Tobago"/>
+		<item code="ti" value="Tunisia"/>
+		<item code="tu" value="Turkey"/>
+		<item code="tk" value="Turkmenistan"/>
+		<item code="tc" value="Turks and Caicos Islands"/>
+		<item code="tv" value="Tuvalu"/>
+		<item code="ug" value="Uganda"/>
+		<item code="un" value="Ukraine"/>
+		<item code="ts" value="United Arab Emirates"/>
+		<item code="xxk" value="United Kingdom"/>
+		<item code="uik" value="United Kingdom Misc. Islands"/>
+		<item code="xxu" value="United States"/>
+		<item code="uc" value="United States Misc. Caribbean Islands"/>
+		<item code="up" value="United States Misc. Pacific Islands"/>
+		<item code="uy" value="Uruguay"/>
+		<item code="utu" value="Utah"/>
+		<item code="uz" value="Uzbekistan"/>
+		<item code="nn" value="Vanuatu"/>
+		<item code="vp" value="Various places"/>
+		<item code="vc" value="Vatican City"/>
+		<item code="ve" value="Venezuela"/>
+		<item code="vtu" value="Vermont"/>
+		<item code="vra" value="Victoria"/>
+		<item code="vm" value="Vietnam"/>
+		<item code="vi" value="Virgin Islands of the United States"/>
+		<item code="vau" value="Virginia"/>
+		<item code="wk" value="Wake Island"/>
+		<item code="wlk" value="Wales"/>
+		<item code="wf" value="Wallis and Futuna"/>
+		<item code="wau" value="Washington (State)"/>
+		<item code="wj" value="West Bank of the Jordan River"/>
+		<item code="wvu" value="West Virginia"/>
+		<item code="wea" value="Western Australia"/>
+		<item code="ss" value="Western Sahara "/>
+		<item code="wiu" value="Wisconsin"/>
+		<item code="wyu" value="Wyoming"/>
+		<item code="ye" value="Yemen"/>
+		<item code="ykc" value="Yukon Territory"/>
+		<item code="za" value="Zambia"/>
+		<item code="rh" value="Zimbabwe"/>
+	</externalCodeList>
+</format>

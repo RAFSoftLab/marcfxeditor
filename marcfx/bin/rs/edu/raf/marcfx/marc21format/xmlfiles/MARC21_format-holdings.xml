@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<format name="MARC 21 format" description="MARC 21 format for holdings data" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="E:\nauka\doktorat-softver\doktorat-workspace\marc21.cataloguing.editor\src\marc21\cataloguing\format\xmlfiles\marc21_formatNovo.xsd">
+	<leader repeatable="false" name="LEADER" mandatory="true">
+		<charposition start="00" end="04" description="Record length" isSystemGenerated="usually"/>
+		<charposition start="05" end="05" description="Record status" isSystemGenerated="usually">
+			<codelist>
+				<internalCodeList>
+					<item code="c" value="Corrected or revised"/>
+					<item code="d" value="Deleted"/>
+					<item code="n" value="New"/>
+				</internalCodeList>
+			</codelist>
+		</charposition>
+		<charposition start="06" end="06" description="Type of record" isSystemGenerated="never">
+			<codelist>
+				<internalCodeList>
+					<item code="u" value="Unknown"/>
+					<item code="v" value="Multipart item holdings "/>
+					<item code="x" value="Single-part item holdings"/>
+					<item code="y" value="Serial item holdings"/>
+				</internalCodeList>
+			</codelist>
+		</charposition>
+		<charposition start="07" end="07" description="Bibliographic level"/>
+		<charposition start="08" end="08" description="Type of control"/>
+		<charposition start="09" end="09" description="Character coding scheme" isSystemGenerated="usually"/>
+		<charposition start="10" end="10" description="Indicator count" defaultValue="2"/>
+		<charposition start="11" end="11" description="Subfield code count" defaultValue="2"/>
+		<charposition start="12" end="16" description="Base address of data" isSystemGenerated="usually"/>
+		<charposition start="17" end="17" description="Encoding level"/>
+		<charposition start="18" end="18" description="Descriptive cataloging form"/>
+		<charposition start="19" end="19" description="Multipart resource record level"/>
+		<charposition start="20" end="20" description="Length of the length-of-field portion" defaultValue="4"/>
+		<charposition start="21" end="21" description="Length of the starting-character-position portion" defaultValue="5"/>
+		<charposition start="22" end="22" description="Length of the implementation-defined portion" defaultValue="0"/>
+		<charposition start="23" end="23" description="Undefined" defaultValue="0"/>
+	</leader>
+	<directory repeatable="false">
+		<charposition start="00" end="02" description="Tag" isSystemGenerated="always"/>
+		<charposition start="03" end="06" description="Field length" isSystemGenerated="always"/>
+		<charposition start="07" end="11" description="Starting character position" isSystemGenerated="always"/>
+	</directory>
+	<controlfield repeatable="false" description="Control Number" name="001" isSystemGenerated="may be"/>
+	<controlfield repeatable="false" description="Control Number Identifier" name="003" isSystemGenerated="usually"/>
+	<datafield repeatable="true" description="Restrictions on Access Note" name="506">
+		<subfield repeatable="false" description="Terms governing access" name="a"></subfield>
+		<subfield repeatable="true" description="Jurisdiction" name="b"/>
+		<subfield repeatable="true" description="Physical access provisions" name="c" />
+		<indicator index="1" description="Restriction">
+			<internalCodeList>
+				<item code="#" value="No information provided"></item>
+				<item code="0" value="No restrictions"></item>
+				<item code="1" value="Restrictions apply"></item>
+			</internalCodeList>
+		</indicator>
+	</datafield>
+	<datafield repeatable="true" description="Location" name="852">		
+		<subfield repeatable="false" description="Location" name="a"/>
+		<subfield repeatable="true" description="Sublocation or collection" name="b"/>
+		<subfield repeatable="true" description="Shelving location" name="c"/>
+		<indicator index="1" description="Shelving scheme">
+			<internalCodeList>
+				<item code="#" value="No information provided"/>
+				<item code="0" value="Library of Congress classification"/>
+				<item code="1" value="Dewey Decimal classification"/>
+				<item code="2" value="National Library of Medicine classification"/>
+				<item code="3" value="Superintendent of Documents classification"/>
+				<item code="4" value="Shelving control number"/>
+				<item code="5" value="Title"/>
+				<item code="6" value="Shelved separately"/>
+				<item code="7" value="Source specified in subfield $2"/>
+				<item code="8" value="Other scheme"/>
+			</internalCodeList>
+		</indicator>
+	</datafield>	
+	<datafield repeatable="true" description="Captions and Pattern - Basic Bibliographic Unit" name="853">
+		<subfield repeatable="false" description="First level of enumeration" name="a"></subfield>
+		<subfield repeatable="false" description="Second level of enumeration" name="b"></subfield>
+		<subfield repeatable="false" description="Third level of enumeration" name="c"></subfield>
+		<subfield repeatable="false" description="Fourth level of enumeration" name="d"></subfield>
+		<subfield repeatable="false" description="Fifth level of enumeration" name="e"></subfield>
+		<indicator index="1" description="Compressibility and expandability">
+			<internalCodeList>
+				<item code="0" value="Cannot compress or expand"></item>
+				<item code="1" value="Can compress but not expand"></item>
+				<item code="2" value="Can compress or expand"></item>
+				<item code="3" value="Unknown"></item>				
+			</internalCodeList>
+		</indicator>
+	</datafield>
+</format>

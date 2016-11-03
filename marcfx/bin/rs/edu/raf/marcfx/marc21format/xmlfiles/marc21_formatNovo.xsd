@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 U (http://www.altova.com) by Srđan Škrbić (PMF, Department of Mathematics and Informatics) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="format">
+		<xs:annotation>
+			<xs:documentation>UNIMARC and MARC21 format</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="leader"/>
+				<xs:element ref="directory" minOccurs="0"/>
+				<xs:element ref="controlfield" maxOccurs="unbounded"/>
+				<xs:element ref="datafield" maxOccurs="unbounded"/>
+				<xs:element ref="externalCodeList" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="leader">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="charposition" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="optional" default="LEADER"/>
+			<xs:attribute name="repeatable" type="xs:boolean" use="required" fixed="false"/>
+			<xs:attribute name="mandatory" type="xs:boolean" use="optional" fixed="true"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="directory">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="charposition" maxOccurs="3"/>
+			</xs:sequence>
+			<xs:attribute name="repeatable" type="xs:boolean" use="required" fixed="false"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="controlfield">
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="charposition" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="repeatable" type="xs:boolean" use="required"/>
+			<xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+			<xs:attribute name="materialType" type="materialTypeType" use="optional"/>
+			<xs:attribute name="materialCategory" type="materialCategoryType" use="optional"/>
+			<xs:attribute name="isSystemGenerated" type="systemGenerated" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="datafield">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="subfield" maxOccurs="unbounded"/>
+				<xs:element ref="indicator" minOccurs="0" maxOccurs="2"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="repeatable" type="xs:boolean" use="required"/>
+			<xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+			<xs:attribute name="embaddedFieldsAllowed" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="charposition">
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="codelist"/>
+			</xs:sequence>
+			<xs:attribute name="start" type="xs:int" use="required"/>
+			<xs:attribute name="end" type="xs:int" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="defaultValue" type="xs:string" use="optional"/>
+			<xs:attribute name="isSystemGenerated" type="systemGenerated" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subfield">
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element ref="charposition" maxOccurs="unbounded"/>
+				<xs:element ref="codelist"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="repeatable" type="xs:boolean" use="required"/>
+			<xs:attribute name="mandatory" type="xs:boolean" use="optional"/>
+			<xs:attribute name="defaultValue" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="indicator">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="internalCodeList"/>
+			</xs:sequence>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+			<xs:attribute name="index" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="defaultValue" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="codelist">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="internalCodeList"/>
+				<xs:element name="externalCodeListID" type="xs:string"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="internalCodeList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="item" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="externalCodeList">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="item" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="source" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="item">
+		<xs:complexType>
+			<xs:attribute name="code" type="xs:string" use="required"/>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="materialCategoryType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="a-Map"/>
+			<xs:enumeration value="c-Electronic resource"/>
+			<xs:enumeration value="d-Globe"/>
+			<xs:enumeration value="f-Tactile material"/>
+			<xs:enumeration value="g-Projected graphic"/>
+			<xs:enumeration value="h-Micro form"/>
+			<xs:enumeration value="k-Nonprojected graphics"/>
+			<xs:enumeration value="m-Motion picture"/>
+			<xs:enumeration value="o-Kit"/>
+			<xs:enumeration value="q-Noted music"/>
+			<xs:enumeration value="r-Remote-sensing image"/>
+			<xs:enumeration value="s-Sound recording"/>
+			<xs:enumeration value="t-Text"/>
+			<xs:enumeration value="v-Videorecording"/>
+			<xs:enumeration value="z-Unspecified"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="materialTypeType">
+		<xs:annotation>
+			<xs:documentation>BK-Books, CF-Computer files, MP-Maps, MU-Music, CR-Continuing Resources, VM-Visual Materials, MX-Mixed Materials</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BK"/>
+			<xs:enumeration value="CF"/>
+			<xs:enumeration value="MP"/>
+			<xs:enumeration value="MU"/>
+			<xs:enumeration value="CR"/>
+			<xs:enumeration value="VM"/>
+			<xs:enumeration value="MX"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="systemGenerated">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="never"/>
+			<xs:enumeration value="may be"/>
+			<xs:enumeration value="usually"/>
+			<xs:enumeration value="always"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
